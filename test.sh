@@ -30,5 +30,18 @@ echo $INPUT_UPLOAD_BLOB_URL
 # see https://www.jviotti.com/2024/01/29/using-xcode-instruments-for-cpp-cpu-profiling.html
 # if we were investigating this on linux, we could reach for something less Apple-y, like perf
 
-./profile.sh \
+case $action in
+  instruments)
+    echo "Tracing with instruments profile."
+    ./profile.sh \
+        $(which node) ./dist/upload/index.js
+    ;;
+  nodeprof)
+    echo "Node --prof mode"
+    $(which node) --prof ./dist/upload/index.js
+    ;;
+  *)
+    echo "running directly"
     $(which node) ./dist/upload/index.js
+    ;;
+esac
