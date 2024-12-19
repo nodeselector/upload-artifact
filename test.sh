@@ -13,9 +13,9 @@ fi
 
 if ! [[ -f '/tmp/data' ]]; then
     echo populating test data
-    for i in $(seq 0 400); do
-        dd if=/dev/urandom of=/tmp/data-$i bs=1M count=1
-    done
+        dd if=/dev/urandom of=/tmp/data1 bs=10M count=10
+        dd if=/dev/urandom of=/tmp/data2 bs=10M count=10
+        dd if=/dev/urandom of=/tmp/data3 bs=1G count=1
 fi
 
 export INPUT_PATH='/tmp/data*'
