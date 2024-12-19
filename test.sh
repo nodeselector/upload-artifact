@@ -18,7 +18,7 @@ if ! [[ -f '/tmp/data' ]]; then
     done
 fi
 
-export INPUT_PATH='/tmp/data'
+export INPUT_PATH='/tmp/data*'
 export INPUT_NAME="$BLOB_NAME"
 export INPUT_OVERWRITE='false'
 export INPUT_INCLUDE_HIDDEN_FILES='false'
