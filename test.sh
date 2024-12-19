@@ -12,7 +12,10 @@ if [[ -z $BLOB_NAME ]]; then
 fi
 
 if ! [[ -f '/tmp/data' ]]; then
-    dd if=/dev/urandom of=/tmp/data bs=1M count=500
+    echo populating test data
+    for i in $(seq 0 400); do
+        dd if=/dev/urandom of=/tmp/data-$i bs=1M count=1
+    done
 fi
 
 export INPUT_PATH='/tmp/data'
